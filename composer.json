@@ -1,14 +1,14 @@
 {
-    "name": "bmanza/php-smarty-streets-wrapper",
+    "name": "chefsplate/php-smarty-streets-wrapper",
     "description": "API Wrapper for smarty streets address validation services",
     "keywords": ["address","validation", "smartystreets"],
-    "homepage": "https://github.com/bmanza/php-smarty-streets-wrapper.git",
+    "homepage": "https://github.com/chefsplate/php-smarty-streets-wrapper.git",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Brent Manza",
-            "email": "brent.manza@gmail.com"
+            "email": "brent.manza@chefsplate.com"
         }
     ],
     "require": {

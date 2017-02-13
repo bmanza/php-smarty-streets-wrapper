@@ -20,21 +20,12 @@ abstract class ComplexType
      * @return array $this
      */
 	public function toUrl()
-	{
-		$url = '?';
-		if ($this instanceof \SmartyStreets\AddressValidationService\ClientDetail) {
-			foreach ($this->toArray() as $key => $value) {
-				$key = str_replace('_', '-', $key);
-				$url .= $key.'='.$value;
-			}
-		} else {
-			$url = '&';
-			foreach ($this->toArray() as $key => $value) {
-				$url .= $key.'='.$value;
-			}
+	{	
+		$query_string = '';
+		foreach ($this->toArray() as $key => $value) {
+			$query_string .= $query_string.$key.'='.$value.'&';
 		}
-
-		return $url;
+		return $query_string;
 	}
 }
 

@@ -7,11 +7,18 @@ use SmartyStreets\AddressValidationService\ClientDetail;
 class Request
 {
 	/**
-     * base url
+     * base International url
      *
      * @var string
      */
-	protected $base_url = 'https://international-street.api.smartystreets.com/verify';
+	protected $base_international_url = 'https://international-street.api.smartystreets.com/verify?';
+
+	/**
+     * base International url
+     *
+     * @var string
+     */
+	protected $base_american_url = 'https://us-street.api.smartystreets.com/street-address?';
 
 	/**
      * Client Authentication Detail
@@ -75,12 +82,7 @@ class Request
      */
 	private function assembleRequest()
 	{
-		$url = $base_url;
-		if ($this->client_detail) {
-			$url = $url.'?'.$this->client_detail->toUrl();
-		} elseif ($this->address) {
-			$url = $url.'&'.$this->address->toUrl();
-		}
+		$url = $base_url.$this->client_detail->toUrl().$this->address->toUrl();
 		return urlencode($url);
 	}
 }

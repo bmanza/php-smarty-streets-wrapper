@@ -122,13 +122,6 @@ class Address extends ComplexType
 	{
 		$postal_code = strtoupper($postal_code);
 		$postal_code = str_replace(' ', '', $postal_code);
-
-		$postal_regex = '/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i';
-
-		if (!preg_match($postal_regex, $prefix_without_whitespace)) {
-            throw new \Exception('Invalid postal code format');
-        }
-
 		$this->postal_code = $postal_code;
 		return $this;
 	}

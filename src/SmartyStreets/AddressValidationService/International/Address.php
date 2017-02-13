@@ -2,9 +2,9 @@
 
 namespace SmartyStreets\AddressValidationService\International;
 
-use SmartyStreets\ComplexType;
+use SmartyStreets\SimpleType;
 
-class Address extends ComplexType
+class Address extends SimpleType
 {
 	/**
      * Address line 1

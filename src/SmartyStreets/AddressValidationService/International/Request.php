@@ -11,14 +11,7 @@ class Request
      *
      * @var string
      */
-	protected $base_international_url = 'https://international-street.api.smartystreets.com/verify?';
-
-	/**
-     * base International url
-     *
-     * @var string
-     */
-	protected $base_american_url = 'https://us-street.api.smartystreets.com/street-address?';
+	protected $base_url = 'https://international-street.api.smartystreets.com/verify?';
 
 	/**
      * Client Authentication Detail
@@ -65,7 +58,7 @@ class Request
      */
 	public function send()
 	{
-		$request_url = $this->assembleRequest();
+		$request_url = $this->assembleRequest($this->url);
 		$client = new \GuzzleHttp\Client();
 		$response = $client->request('GET', $request_url, [
 			'headers' => [
@@ -82,7 +75,7 @@ class Request
      */
 	private function assembleRequest()
 	{
-		$url = $base_url.$this->client_detail->toUrl().$this->address->toUrl();
+		$url = $this->base_url.$this->client_detail->toUrl().'&'.$this->address->toUrl();
 		return urlencode($url);
 	}
 }

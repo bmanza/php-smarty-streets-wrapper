@@ -2,9 +2,9 @@
 
 namespace SmartyStreets\AddressValidationService;
 
-use SmartyStreets\ComplexType;
+use SmartyStreets\SimpleType;
 
-class ClientDetail extends ComplexType
+class ClientDetail extends SimpleType
 {
 	/**
      * Smarty Streets API Auth Id

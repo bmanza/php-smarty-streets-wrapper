@@ -43,4 +43,14 @@ class ClientDetail extends SimpleType
 		$this->auth_token = $auth_token;
 		return $this;
 	}
+
+	public function toUrl()
+	{	
+		$query_string = '';
+		foreach ($this->toArray() as $key => $value) {
+			$key = str_replace('_', '-', $key);
+			$query_string = $query_string.$key.'='.$value.'&';
+		}
+		return $query_string;	
+	}
 }

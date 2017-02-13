@@ -58,14 +58,14 @@ class Request
      */
 	public function send()
 	{
-		$request_url = $this->assembleRequest($this->url);
+		$request_url = $this->assembleRequest();
 		$client = new \GuzzleHttp\Client();
 		$response = $client->request('GET', $request_url, [
 			'headers' => [
 				'host' =>  'international-street.api.smartystreets.com'
 			]
 		]);
-		return $response;
+		return json_decode($response->getBody());
 	}
 
 	/**
@@ -75,7 +75,6 @@ class Request
      */
 	private function assembleRequest()
 	{
-		$url = $this->base_url.$this->client_detail->toUrl().'&'.$this->address->toUrl();
-		return urlencode($url);
+		return $this->base_url.$this->client_detail->toUrl().'&'.$this->address->toUrl();
 	}
 }

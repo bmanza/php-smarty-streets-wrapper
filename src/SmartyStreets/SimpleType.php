@@ -11,7 +11,13 @@ abstract class SimpleType
      */
 	public function toArray()
 	{
-		return get_object_vars($this);
+		$array = get_object_vars($this);
+		foreach ($array as $key => $value) {
+			if (is_null($array[$key])) {
+				unset($array[$key]);
+			}
+		}
+		return $array;
 	}
 
 	/**
@@ -23,14 +29,8 @@ abstract class SimpleType
 	{	
 		$query_string = '';
 		foreach ($this->toArray() as $key => $value) {
-			//need to change underscores to dashes
-			if ($this instanceof SmartyStreets\AddressValidationService\ClientDetail) {
-				$key = str_replace('_', '-', $key);
-			}
-			$query_string .= $query_string.$key.'='.$value.'&';
+			$query_string = $query_string.$key.'='.$value.'&';
 		}
 		return $query_string;
 	}
 }
-
-	

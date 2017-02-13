@@ -80,7 +80,7 @@ class Address extends SimpleType
      * Line 1 of the address.
      *
      * @param string $address1
-     * return Address
+     * @return Address
      */
 	public function setAddress1($address1)
 	{
@@ -92,7 +92,7 @@ class Address extends SimpleType
      * Line 2 of the address.
      *
      * @param string $address2
-     * return Address
+     * @return Address
      */
 	public function setAddress2($address2)
 	{
@@ -104,7 +104,7 @@ class Address extends SimpleType
      * Line 3 of the address.
      *
      * @param string $address3
-     * return Address
+     * @return Address
      */
 	public function setAddress3($address3)
 	{
@@ -116,7 +116,7 @@ class Address extends SimpleType
      * Postal Code of the address.
      *
      * @param string $postal_code
-     * return Address
+     * @return Address
      */
 	public function setPostalCode($postal_code)
 	{
@@ -130,7 +130,7 @@ class Address extends SimpleType
      * country of the address.
      *
      * @param string $country
-     * return Address
+     * @return Address
      */
 	public function setCountry($country)
 	{
@@ -142,7 +142,7 @@ class Address extends SimpleType
      * city of the address.
      *
      * @param string $locality
-     * return Address
+     * @return Address
      */
 	public function setLocality($locality)
 	{
@@ -154,11 +154,38 @@ class Address extends SimpleType
      * Province or State of the address.
      *
      * @param string $administrative_area
-     * return Address
+     * @return Address
      */
 	public function setAdministrativeArea($administrative_area)
 	{
 		$this->administrative_area = $administrative_area;
+		return $this;
+	}
+
+	/**
+     * return geolocation of address
+     *
+     * @param boolean $geocode
+     * @return Address
+     */
+	public function setGeocode($geocode)
+	{
+		if (is_bool($geocode)) {
+			$geocode = (string)($geocode);
+		}
+		$this->geocode = $geocode;
+		return $this;
+	}
+
+	/**
+     * language
+     *
+     * @param string $language
+     * @return Address
+     */
+	public function setLanguage($language)
+	{
+		$this->language = $language;
 		return $this;
 	}
 }

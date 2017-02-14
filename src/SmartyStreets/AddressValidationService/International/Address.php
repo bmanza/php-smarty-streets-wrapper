@@ -171,7 +171,7 @@ class Address extends SimpleType
 	public function setGeocode($geocode)
 	{
 		if (is_bool($geocode)) {
-			$geocode = (string)($geocode);
+			$geocode = ($geocode) ? 'true' : 'false';
 		}
 		$this->geocode = $geocode;
 		return $this;
